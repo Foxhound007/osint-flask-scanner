@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 Flask
 fpdf2
 dnspython
 ipwhois
 python-whois
 requests
+=======
+Flask
+fpdf2
+dnspython
+ipwhois
+python-whois
+requests
+>>>>>>> 289b46ee93a9deeb56bf32d1effaebc63dfe84ab
 pyOpenSSL
