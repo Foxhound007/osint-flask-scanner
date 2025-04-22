@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scan Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h2>Scan Results for {{ domain }}</h2>
+    <p><a href="{{ url_for('download', filename=pdf_filename) }}">📥 Download PDF Report</a></p>
+
+    <h3>Subdomains</h3>
+    <ul>
+        {% for sub in subdomains %}
+        <li>{{ sub }}</li>
+        {% endfor %}
+    </ul>
+
+    <p style="margin-top: 2rem;"><a href="{{ url_for('index') }}">← Run Another Scan</a></p>
+</body>
+</html>

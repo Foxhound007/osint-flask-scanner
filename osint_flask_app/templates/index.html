@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OSINT Scanner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>OSINT Domain Scanner</h1>
+    <form method="POST">
+        <label>Enter a domain:</label><br>
+        <input type="text" name="domain" placeholder="example.com" required>
+        <button type="submit">Run Scan</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,19 @@
+# 🕵️‍♂️ OSINT Flask Scanner
+
+A simple web application for automated OSINT data collection from a given domain. Results include WHOIS info, DNS records, IP data, SSL certificates, and subdomains (via crt.sh). Also generates a downloadable PDF report.
+
+## Features
+- Domain-based scanning
+- Subdomain enumeration (crt.sh)
+- IP geolocation & SSL cert info
+- WHOIS and DNS info
+- Auto-generated PDF report
+- Flask-based web interface
+
+## Run Locally
+
+```bash
+git clone https://github.com/yourusername/osint-flask-scanner.git
+cd osint-flask-scanner
+pip install -r requirements.txt
+python app.py

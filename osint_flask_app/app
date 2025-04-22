@@ -1,0 +1,39 @@
+from flask import Flask, render_template, request, send_file
+from datetime import datetime
+import os
+
+from osint_modules import (
+    get_whois, get_dns_records, get_ip_info, get_ssl_info,
+    get_subdomains_crtsh, generate_pdf_report
+)
+
+app = Flask(__name__)
+
+@app.route("/", methods=["GET", "POST"])
+def index():
+    if request.method == "POST":
+        domain = request.form["domain"]
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M")
+        filename = f"{domain}_osint_{timestamp}.pdf"
+
+        whois_data = get_whois(domain)
+        dns_data = get_dns_records(domain)
+        ip_data = get_ip_info(domain)
+        ssl_data = get_ssl_info(domain)
+        subdomains = get_subdomains_crtsh(domain)
+
+        generate_pdf_report(domain, whois_data, dns_data, ip_data, ssl_data, subdomains, filename)
+
+        return render_template("results.html", domain=domain, pdf_filename=filename,
+                               whois=whois_data, dns=dns_data, ip=ip_data, ssl=ssl_data,
+                               subdomains=subdomains)
+
+    return render_template("index.html")
+
+@app.route("/download/<filename>")
+def download(filename):
+    path = os.path.join(os.getcwd(), filename)
+    return send_file(path, as_attachment=True)
+
+if __name__ == "__main__":
+    app.run(debug=True)
