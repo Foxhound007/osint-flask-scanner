@@ -1,0 +1,7 @@
+Flask
+fpdf2
+dnspython
+ipwhois
+python-whois
+requests
+pyOpenSSL
